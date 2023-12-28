@@ -1,0 +1,22 @@
+name: .NET CI/CD Workflow
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  release:
+    types: [published]
+  
+jobs:
+  pull_request_job:
+    name: Pull Request Job
+    uses: frankhaugen/Workflows/.github/workflows/dotnet-nuget-ubuntu.yml@main
+
+  merge_job:
+    name: Merge Job
+    uses: frankhaugen/Workflows/.github/workflows/dotnet-nuget-ubuntu.yml@main
+  
+  release_job:
+    name: Release Job
+    uses: frankhaugen/Workflows/.github/workflows/dotnet-nuget-ubuntu.yml@main  
