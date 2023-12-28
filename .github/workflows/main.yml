@@ -8,17 +8,16 @@ on:
   release:
     types: [published]
   workflow_dispatch:
-    
-  
+
 jobs:
   pull_request_job:
     name: Pull Request Job
-    uses: frankhaugen/Workflows/.github/workflows/dotnet-nuget-ubuntu.yml@main
+    uses: frankhaugen/Workflows/.github/workflows/dotnet-get-version.yml@main
 
   merge_job:
     name: Merge Job
-    uses: frankhaugen/Workflows/.github/workflows/dotnet-nuget-ubuntu.yml@main
+    uses: frankhaugen/Workflows/.github/workflows/dotnet-get-version.yml@main
   
   release_job:
     name: Release Job
-    uses: frankhaugen/Workflows/.github/workflows/dotnet-nuget-ubuntu.yml@main  
+    uses: frankhaugen/Workflows/.github/workflows/dotnet-get-version.yml@main  
