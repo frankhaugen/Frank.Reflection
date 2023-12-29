@@ -13,10 +13,6 @@ jobs:
   get_version_job:
     name: Get Version Job
     uses: frankhaugen/Workflows/.github/workflows/dotnet-get-version.yml@main
-    outputs:
-      ReleaseVersion: ${{ steps.get_version_job.outputs.ReleaseVersion }}
-      PreviewAssemblyVersion: ${{ steps.get_version_job.outputs.PreviewAssemblyVersion }}
-      PreviewPackageVersion: ${{ steps.get_version_job.outputs.PreviewPackageVersion }}
 
   pull_request_job:
     name: Pull Request Job
