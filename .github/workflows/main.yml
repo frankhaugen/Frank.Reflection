@@ -35,7 +35,8 @@ jobs:
       ReleaseVersion: ${{ needs.get-latest-release-version.outputs.version }}
       PreviewAssemblyVersion: "${{ needs.get-latest-release-version.outputs.version }}.${{ github.run_number }}"
       PreviewPackageVersion: "${{ needs.get-latest-release-version.outputs.version }}.${{ github.run_number }}-preview"
-
+    secrets: inherit
+    
   merge_job:
     name: Merge Job
     needs: get-latest-release-version
@@ -45,7 +46,8 @@ jobs:
       ReleaseVersion: ${{ needs.get-latest-release-version.outputs.version }}
       PreviewAssemblyVersion: "${{ needs.get-latest-release-version.outputs.version }}.${{ github.run_number }}"
       PreviewPackageVersion: "${{ needs.get-latest-release-version.outputs.version }}.${{ github.run_number }}-preview"
-
+    secrets: inherit
+    
   release_job:
     name: Release Job
     needs: get-latest-release-version
@@ -55,3 +57,5 @@ jobs:
       ReleaseVersion: ${{ needs.get-latest-release-version.outputs.version }}
       PreviewAssemblyVersion: "${{ needs.get-latest-release-version.outputs.version }}.${{ github.run_number }}"
       PreviewPackageVersion: "${{ needs.get-latest-release-version.outputs.version }}.${{ github.run_number }}-preview"
+    secrets: inherit
+    
