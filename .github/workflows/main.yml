@@ -17,11 +17,13 @@ jobs:
   pull_request_job:
     name: Pull Request Job
     needs: get_version_job
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
     uses: frankhaugen/Workflows/.github/workflows/dotnet-pull-request.yml@main
 
   merge_job:
     name: Merge Job
     needs: get_version_job
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     uses: frankhaugen/Workflows/.github/workflows/dotnet-publish-preview.yml@main
     with:
       ReleaseVersion: ${{ needs.get_version_job.outputs.ReleaseVersion }}
@@ -31,6 +33,7 @@ jobs:
   release_job:
     name: Release Job
     needs: get_version_job
+    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
     uses: frankhaugen/Workflows/.github/workflows/dotnet-publish-release.yml@main
     with:
       ReleaseVersion: ${{ needs.get_version_job.outputs.ReleaseVersion }}
