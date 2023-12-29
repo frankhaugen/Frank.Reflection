@@ -10,36 +10,48 @@ on:
   workflow_dispatch:
 
 jobs:
-  get_version_job:
-    name: Get Version Job
-    uses: frankhaugen/Workflows/.github/workflows/dotnet-get-version.yml@main
+  get-latest-release-version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set Output
+        id: get_version
+        run: |
+          LATEST_VERSION=$(gh release list | head -n 1 | awk '{print $1}') || true
+          if [ -z "$LATEST_VERSION" ]; then
+            LATEST_VERSION="0.1"
+          fi
+          echo "::set-output name=version::$LATEST_VERSION"
 
   pull_request_job:
     name: Pull Request Job
-    needs: get_version_job
+    needs: get-latest-release-version
     if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
     uses: frankhaugen/Workflows/.github/workflows/dotnet-pull-request.yml@main
     with:
-      ReleaseVersion: ${{ needs.get_version_job.outputs.ReleaseVersion }}
-      PreviewAssemblyVersion: ${{ needs.get_version_job.outputs.PreviewAssemblyVersion }}
-      PreviewPackageVersion: ${{ needs.get_version_job.outputs.PreviewPackageVersion }}
+      ReleaseVersion: ${{ needs.get-latest-release-version.outputs.version }}
+      PreviewAssemblyVersion: "${{ needs.get-latest-release-version.outputs.version }}.${{ github.run_number }}"
+      PreviewPackageVersion: "${{ needs.get-latest-release-version.outputs.version }}.${{ github.run_number }}-preview"
 
   merge_job:
     name: Merge Job
-    needs: get_version_job
+    needs: get-latest-release-version
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     uses: frankhaugen/Workflows/.github/workflows/dotnet-publish-preview.yml@main
     with:
-      ReleaseVersion: ${{ needs.get_version_job.outputs.ReleaseVersion }}
-      PreviewAssemblyVersion: ${{ needs.get_version_job.outputs.PreviewAssemblyVersion }}
-      PreviewPackageVersion: ${{ needs.get_version_job.outputs.PreviewPackageVersion }}
+      ReleaseVersion: ${{ needs.get-latest-release-version.outputs.version }}
+      PreviewAssemblyVersion: "${{ needs.get-latest-release-version.outputs.version }}.${{ github.run_number }}"
+      PreviewPackageVersion: "${{ needs.get-latest-release-version.outputs.version }}.${{ github.run_number }}-preview"
 
   release_job:
     name: Release Job
-    needs: get_version_job
+    needs: get-latest-release-version
     if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
     uses: frankhaugen/Workflows/.github/workflows/dotnet-publish-release.yml@main
     with:
-      ReleaseVersion: ${{ needs.get_version_job.outputs.ReleaseVersion }}
-      PreviewAssemblyVersion: ${{ needs.get_version_job.outputs.PreviewAssemblyVersion }}
-      PreviewPackageVersion: ${{ needs.get_version_job.outputs.PreviewPackageVersion }}
+      ReleaseVersion: ${{ needs.get-latest-release-version.outputs.version }}
+      PreviewAssemblyVersion: "${{ needs.get-latest-release-version.outputs.version }}.${{ github.run_number }}"
+      PreviewPackageVersion: "${{ needs.get-latest-release-version.outputs.version }}.${{ github.run_number }}-preview"
