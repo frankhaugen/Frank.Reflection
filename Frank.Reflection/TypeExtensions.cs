@@ -25,7 +25,7 @@ public static class TypeExtensions
     /// </summary>
     /// <param name="type">The Type to get the friendly name for.</param>
     /// <returns>The friendly name of the specified Type.</returns>
-    public static string GetFriendlyName(this Type type) => GetDisplayNameInternal(type);
+    public static string GetFriendlyName(this Type type) => GetFriendlyNameInternal(type);
 
     /// <summary>
     /// Returns the full friendly name of the specified <see cref="Type"/>. e.g. System.Collections.Generic.Dictionary&lt;System.String, System.Object&gt;
