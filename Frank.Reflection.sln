@@ -18,6 +18,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.Reflection.Tests", "Frank.Reflection.Tests\Frank.Reflection.Tests.csproj", "{EAD66EE0-CBBA-41F7-9EA5-785CF2EC8555}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.Reflection.Mermaid", "Frank.Reflection.Mermaid\Frank.Reflection.Mermaid.csproj", "{86D41DFA-6D0D-4710-9468-FF03C141D537}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.Reflection.Roslyn", "Frank.Reflection.Roslyn\Frank.Reflection.Roslyn.csproj", "{E90B2FBD-E234-4802-941C-CA01E83600E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,5 +39,13 @@ Global
 		{EAD66EE0-CBBA-41F7-9EA5-785CF2EC8555}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAD66EE0-CBBA-41F7-9EA5-785CF2EC8555}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAD66EE0-CBBA-41F7-9EA5-785CF2EC8555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86D41DFA-6D0D-4710-9468-FF03C141D537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86D41DFA-6D0D-4710-9468-FF03C141D537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86D41DFA-6D0D-4710-9468-FF03C141D537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86D41DFA-6D0D-4710-9468-FF03C141D537}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90B2FBD-E234-4802-941C-CA01E83600E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90B2FBD-E234-4802-941C-CA01E83600E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90B2FBD-E234-4802-941C-CA01E83600E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90B2FBD-E234-4802-941C-CA01E83600E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
