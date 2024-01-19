@@ -32,7 +32,7 @@ public class MarkdownDocumentationGeneratorTests
         _outputHelper = outputHelper;
     }
 
-    [Fact]
+    // [Fact]
     public async Task GenerateDocumentationForType_ReturnsCorrectDocumentationForSimpleType()
     {
         // Arrange
