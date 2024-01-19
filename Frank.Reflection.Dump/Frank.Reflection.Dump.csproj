@@ -14,5 +14,11 @@
     <ItemGroup>
       <ProjectReference Include="..\Frank.Reflection\Frank.Reflection.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <None Update="readme.md">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 
 </Project>
