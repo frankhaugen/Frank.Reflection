@@ -1,6 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <Description>This library contains some simple extension methods for to make working with the .NET easier.</Description>
+        <PackageTags>Extensions, .NET, C#, .NET Standard</PackageTags>
     </PropertyGroup>
 
 </Project>
