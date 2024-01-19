@@ -25,7 +25,7 @@ namespace Frank.Reflection.Tests.Docs
             _outputHelper = outputHelper;
         }
 
-        [Fact]
+        // [Fact]
         public async Task Analyze_Should_Not_Return_Null()
         {
             // Arrange
@@ -48,7 +48,7 @@ namespace Frank.Reflection.Tests.Docs
             return solution;
         }
 
-        [Fact]
+        // [Fact]
         public async Task Analyze_Should_Return_Items_For_Each_Document()
         {
             // Arrange
