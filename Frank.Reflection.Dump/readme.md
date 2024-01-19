@@ -7,13 +7,13 @@ ___
 [![NuGet](https://img.shields.io/nuget/v/Frank.Reflection.Dump.svg)](https://www.nuget.org/packages/Frank.Reflection.Dump)
 [![NuGet](https://img.shields.io/nuget/dt/Frank.Reflection.Dump.svg)](https://www.nuget.org/packages/Frank.Reflection.Dump)
 
-![GitHub contributors](https://img.shields.io/github/contributors/frankhaugen/Frank.Reflection.Dump)
-![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/frankhaugen/Frank.Reflection.Dump)
-![GitHub last commit](https://img.shields.io/github/last-commit/frankhaugen/Frank.Reflection.Dump)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/frankhaugen/Frank.Reflection.Dump)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/frankhaugen/Frank.Reflection.Dump)
-![GitHub issues](https://img.shields.io/github/issues/frankhaugen/Frank.Reflection.Dump)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/frankhaugen/Frank.Reflection.Dump)
+![GitHub contributors](https://img.shields.io/github/contributors/frankhaugen/Frank.Reflection)
+![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/frankhaugen/Frank.Reflection)
+![GitHub last commit](https://img.shields.io/github/last-commit/frankhaugen/Frank.Reflection)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/frankhaugen/Frank.Reflection)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/frankhaugen/Frank.Reflection)
+![GitHub issues](https://img.shields.io/github/issues/frankhaugen/Frank.Reflection)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/frankhaugen/Frank.Reflection)
 ___
 
 ## Usage
