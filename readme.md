@@ -48,6 +48,43 @@ if (hasValue)
     Console.WriteLine(value);
 }
 ```
+___
+## Frank.Reflection.Dump
+
+A library to dump types to a string that is compilable into a new type. This is useful for generating code from types, for example when generating code for a collection of suppliers to use in a test.
+
+___
+[![NuGet](https://img.shields.io/nuget/v/Frank.Reflection.Dump.svg)](https://www.nuget.org/packages/Frank.Reflection.Dump)
+[![NuGet](https://img.shields.io/nuget/dt/Frank.Reflection.Dump.svg)](https://www.nuget.org/packages/Frank.Reflection.Dump)
+___
+
+### Usage
+
+```csharp
+var type = typeof(Persons);
+var dump = type.DumpClass();
+```
+___
+```csharp
+namespace GeneratedCode;
+
+public static class GeneratedPerson
+{
+    public static Person Get()
+    {
+        return new Person
+        {
+            Name = "Frank",
+            Age = 30,
+            Address = new Address
+            {
+                Street = "Street",
+                Number = 1
+            }
+        };
+    }
+}
+```
 
 ## License
 
