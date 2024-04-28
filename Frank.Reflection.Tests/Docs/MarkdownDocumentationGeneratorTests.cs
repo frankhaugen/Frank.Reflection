@@ -2,17 +2,8 @@
 
 using JetBrains.Annotations;
 
-using Microsoft.CodeAnalysis;
-
-using System.Collections.Generic;
-
-using Xunit;
-
-using System.Linq;
-
 using FluentAssertions;
 
-using Frank.Reflection.Roslyn.Extensions;
 using Frank.Reflection.Roslyn.Helpers;
 using Frank.Testing.Logging;
 
@@ -32,7 +23,7 @@ public class MarkdownDocumentationGeneratorTests
         _outputHelper = outputHelper;
     }
 
-    // [Fact]
+    [Fact]
     public async Task GenerateDocumentationForType_ReturnsCorrectDocumentationForSimpleType()
     {
         // Arrange

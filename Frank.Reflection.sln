@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.Reflection.Roslyn", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.Reflection.Dump", "Frank.Reflection.Dump\Frank.Reflection.Dump.csproj", "{ED9AE95B-993D-45AF-807D-A5A2DE3E4380}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.BuildTasks.MarkdownDocGenerator", "Frank.BuildTasks.MarkdownDocGenerator\Frank.BuildTasks.MarkdownDocGenerator.csproj", "{545F4CC7-EA2D-4428-A436-C7850DE13B61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,5 +55,9 @@ Global
 		{ED9AE95B-993D-45AF-807D-A5A2DE3E4380}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED9AE95B-993D-45AF-807D-A5A2DE3E4380}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED9AE95B-993D-45AF-807D-A5A2DE3E4380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{545F4CC7-EA2D-4428-A436-C7850DE13B61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{545F4CC7-EA2D-4428-A436-C7850DE13B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{545F4CC7-EA2D-4428-A436-C7850DE13B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{545F4CC7-EA2D-4428-A436-C7850DE13B61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

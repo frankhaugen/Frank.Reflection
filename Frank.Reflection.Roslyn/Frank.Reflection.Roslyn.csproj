@@ -13,4 +13,23 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
         <PackageReference Include="Docfx.App" Version="2.75.1" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Frank.BuildTasks.MarkdownDocGenerator">
+        <HintPath>..\Frank.BuildTasks.MarkdownDocGenerator\bin\Debug\netstandard2.1\Frank.BuildTasks.MarkdownDocGenerator.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+<!--    <ItemGroup>-->
+<!--      <Reference Include="..\Frank.BuildTasks.MarkdownDocGenerator\bin\Debug\Frank.BuildTasks.MarkdownDocGenerator.1.0.0.nupkg" />-->
+<!--    </ItemGroup>-->
+
+<!--    &lt;!&ndash; Alternatively, define UsingTask directly if not done in a .targets file &ndash;&gt;-->
+    <UsingTask TaskName="Frank.BuildTasks.MarkdownDocGenerator.GenerateMarkdownTask" AssemblyFile="..\Frank.BuildTasks.MarkdownDocGenerator\bin\Debug\netstandard2.1\Frank.BuildTasks.MarkdownDocGenerator.dll" />
+
+    <Target Name="GenerateMarkdownDocumentation" AfterTargets="Build">
+        <GenerateMarkdownTask ProjcectDirectory="$(MSBuildProjectDirectory)"
+                              OutputDirectory="..\docs" />
+    </Target>
+
 </Project>
