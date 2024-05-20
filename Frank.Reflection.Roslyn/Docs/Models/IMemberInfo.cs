@@ -20,7 +20,7 @@ public interface IMemberInfo
 
     bool IsStatic { get; set; }
     bool IsPublic { get; set; }
-    string Description { get; set; }
+    string? Description { get; set; }
     string Category { get; set; }
     SourceLocation? Location { get; set; }
 

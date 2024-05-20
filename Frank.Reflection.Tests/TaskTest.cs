@@ -20,7 +20,7 @@ public class TaskTest
         var fff = new GenerateMarkdownTask(_outputHelper.CreateTestLogger<GenerateMarkdownTask>())
         {
             OutputDirectory = "../../../DocsTest",
-            ProjcectDirectory = "../../../Frank.Reflection"
+            ProjectDirectory = "../../../Frank.Reflection"
         };
         fff.Execute();
     }

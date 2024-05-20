@@ -148,14 +148,14 @@ public sealed class DocumentSyntaxAnalyzer
         return result;
     }
 
-    private static string GetSummary(CSharpSyntaxNode node)
+    private static string? GetSummary(CSharpSyntaxNode node)
     {
-        DocumentationCommentTriviaSyntax xmlTrivia = node.GetLeadingTrivia()
+        var xmlTrivia = node.GetLeadingTrivia()
             .Select(i => i.GetStructure())
             .OfType<DocumentationCommentTriviaSyntax>()
             .FirstOrDefault();
 
-        List<XmlElementSyntax> xmlComments = xmlTrivia?.ChildNodes()
+        var xmlComments = xmlTrivia?.ChildNodes()
             .OfType<XmlElementSyntax>()
             .ToList();
 
@@ -164,13 +164,13 @@ public sealed class DocumentSyntaxAnalyzer
             return null;
         }
 
-        XmlElementSyntax elementSyntax = xmlComments.SkipWhile(x => !x.StartTag.Name.ToString().Equals("summary")).FirstOrDefault();
+        var elementSyntax = xmlComments.SkipWhile(x => !x.StartTag.Name.ToString().Equals("summary")).FirstOrDefault() ?? xmlComments.FirstOrDefault();
         if (elementSyntax == null)
         {
             return null;
         }
 
-        string description = elementSyntax.Content.ToFullString();
+        string? description = elementSyntax.Content.ToFullString();
         description = Regex.Replace(description, @"\t*///", string.Empty).TrimStart('\r', '\n', ' ').TrimEnd('\r', '\n', ' ');
 
         return description;
@@ -183,6 +183,6 @@ public sealed class DocumentSyntaxAnalyzer
 
     private static bool IsPublic(SyntaxTokenList modifiers)
     {
-        return modifiers.Any(m => m.Value.Equals("public"));
+        return modifiers.Any(m => m.Value != null && m.Value.Equals("public"));
     }
 }

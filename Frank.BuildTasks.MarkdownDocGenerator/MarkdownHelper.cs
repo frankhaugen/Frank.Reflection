@@ -1,6 +1,11 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+
+using XmlDocMarkdown.Core;
 
 namespace Frank.BuildTasks.MarkdownDocGenerator;
 
@@ -12,7 +17,7 @@ public static class MarkdownHelper
         
         var outputFileSyntaxTreePairs = fileSyntaxTreePairs
             .Select(pair => new KeyValuePair<FileInfo, SyntaxTree>(
-                CreateOutputFile(pair.Key, outputDirectory),
+                CreateOutputFile(pair.Key, GetNamspace(pair.Value), outputDirectory),
                 pair.Value
             ));
         
@@ -31,21 +36,31 @@ public static class MarkdownHelper
         Console.WriteLine($"Generated {outputFilesMarkdownPairs.Count()} markdown files.");
     }
 
-    private static FileInfo CreateOutputFile(FileInfo pairKey, DirectoryInfo outputDirectory)
+    private static IEnumerable<string> GetNamspace(SyntaxTree pairValue)
     {
-        var commonRoot = pairKey.Directory!.FullName.Replace(outputDirectory.FullName, "");
-        var outputFilePath = Path.Combine(outputDirectory.FullName, commonRoot, Path.ChangeExtension(pairKey.Name, ".md"));
-        var outputFile = new FileInfo(outputFilePath);
-        if (!outputFile.Directory?.Exists ?? false) outputFile.Directory.Create();
-        return outputFile;
+        var root = pairValue.GetRoot();
+        var @namespace = root.DescendantNodes().OfType<NamespaceDeclarationSyntax>().SelectMany(n => n.Name.ToString().Split('.'));
+        return @namespace;
+    }
+
+    private static FileInfo CreateOutputFile(FileInfo pairKey, IEnumerable<string> @namespace, DirectoryInfo outputDirectory)
+    {
+        var fileName = Path.ChangeExtension(pairKey.Name, ".md");
+        var directory = Path.Combine(outputDirectory.FullName, string.Join("/", @namespace), fileName);
+        var fileInfo = new FileInfo(directory);
+        if (!fileInfo.Directory!.Exists) fileInfo.Directory.Create();
+        return fileInfo;
     }
 
     private static string GenerateMarkdownDocumentation(KeyValuePair<FileInfo, SyntaxTree> fileSyntaxTreePairs)
     {
-        StringBuilder sb = new();
-        
-        sb.AppendLine($"# {fileSyntaxTreePairs.Key.Name}");
-        
-        return sb.ToString();
+        var markdownBuilder = new MarkdownBuilder();
+
+        var ss =new XmlDocInput()
+        {
+            Assembly = Assembly.LoadFrom(fileSyntaxTreePairs.Key.FullName),
+        };
+            
+        return markdownBuilder.ToString();
     }
 }

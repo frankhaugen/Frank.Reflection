@@ -5,13 +5,11 @@
 
     <ItemGroup>
         <PackageReference Include="Frank.Markdown" Version="1.1.0" />
-        <PackageReference Include="Microsoft.Build.Locator" Version="1.6.10" />
-        <PackageReference Include="Microsoft.CodeAnalysis" Version="4.8.0"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.8.0"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.8.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
-        <PackageReference Include="Docfx.App" Version="2.75.1" />
+        <PackageReference Include="Microsoft.Build.Locator" Version="1.7.8" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.9.2"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.9.2" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+        <PackageReference Include="Docfx.App" Version="2.76.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -25,11 +23,14 @@
 <!--    </ItemGroup>-->
 
 <!--    &lt;!&ndash; Alternatively, define UsingTask directly if not done in a .targets file &ndash;&gt;-->
-    <UsingTask TaskName="Frank.BuildTasks.MarkdownDocGenerator.GenerateMarkdownTask" AssemblyFile="..\Frank.BuildTasks.MarkdownDocGenerator\bin\Debug\netstandard2.1\Frank.BuildTasks.MarkdownDocGenerator.dll" />
+<!--    <UsingTask TaskName="Frank.BuildTasks.MarkdownDocGenerator.GenerateMarkdownTask" AssemblyFile="..\Frank.BuildTasks.MarkdownDocGenerator\bin\Debug\netstandard2.1\Frank.BuildTasks.MarkdownDocGenerator.dll" />-->
 
     <Target Name="GenerateMarkdownDocumentation" AfterTargets="Build">
-        <GenerateMarkdownTask ProjcectDirectory="$(MSBuildProjectDirectory)"
-                              OutputDirectory="..\docs" />
+        <GenerateMarkdownTask ProjectDirectory="$(MSBuildProjectDirectory)"
+                              OutputDirectory="..\docs"
+                              AssemblyName="$(AssemblyName)"
+                              AssemblyDirectory="$(OutputPath)"
+        />
     </Target>
 
 </Project>

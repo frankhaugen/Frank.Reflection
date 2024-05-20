@@ -4,9 +4,11 @@ using Microsoft.Build.Framework;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 
+using XmlDocMarkdown.Core;
+
 namespace Frank.BuildTasks.MarkdownDocGenerator;
 
-public class GenerateMarkdownTask : ITask
+public class GenerateMarkdownTask// : ITask
 {
     private readonly ILogger<GenerateMarkdownTask> _logger;
 
@@ -14,13 +16,26 @@ public class GenerateMarkdownTask : ITask
     /// The directory containing the project to generate documentation for.
     /// </summary>
     [Required]
-    public string ProjcectDirectory { get; set; }
+    public string ProjectDirectory { get; set; }
 
     /// <summary>
     /// The directory to output the generated documentation to in markdown format.
     /// </summary>
     [Required]
     public string OutputDirectory { get; set; }
+    
+    
+    /// <summary>
+    /// The directory containing the assembly to load.
+    /// </summary>
+    [Required]
+    public string AssemblyDirectory { get; set; }
+    
+    /// <summary>
+    /// The name of the assembly to load.
+    /// </summary>
+    [Required]
+    public string AssemblyName { get; set; }
 
     static GenerateMarkdownTask()
     {
@@ -46,6 +61,21 @@ public class GenerateMarkdownTask : ITask
         }
         return null;
     }
+    
+    private FileInfo GetAssemblyFile() => GetAssemblyFile(AssemblyDirectory, AssemblyName);
+    
+    private FileInfo GetAssemblyFile(string assemblyDirectory, string assemblyName)
+    {
+        var assemblyFilePath = Path.Combine(assemblyDirectory, assemblyName + ".dll");
+        _logger.LogInformation("Loading assembly from {AssemblyFilePath}", assemblyFilePath);
+        var assemblyFile = new FileInfo(assemblyFilePath);
+        if (!assemblyFile.Exists)
+        {
+            throw new FileNotFoundException($"Assembly file {assemblyFile.FullName} not found.");
+        }
+
+        return assemblyFile;
+    }
 
     public bool Execute()
     {
@@ -53,11 +83,11 @@ public class GenerateMarkdownTask : ITask
 
         try
         {
-            var fileSyntaxTreePairs = RoslynHelper.GetFileSyntaxTreePairs(ProjcectDirectory).ToList();
+            var fileSyntaxTreePairs = RoslynHelper.GetFileSyntaxTreePairs(ProjectDirectory).ToList();
             
             var count = fileSyntaxTreePairs.Count();
             var outputDirectory = new DirectoryInfo(OutputDirectory);
-            var projectDirectory = new DirectoryInfo(ProjcectDirectory);
+            var projectDirectory = new DirectoryInfo(ProjectDirectory);
             
             if (outputDirectory.Exists)
             {
@@ -79,8 +109,26 @@ public class GenerateMarkdownTask : ITask
             Console.WriteLine($"Found {fileSyntaxTreePairs.Count()} files to generate documentation for.");
             Console.WriteLine($"Outputting to {outputDirectory.FullName}");
             Console.WriteLine($"Project directory is {projectDirectory.FullName}");
+            
+            var assemblyFile = GetAssemblyFile();
+            var assembly = Assembly.LoadFrom(assemblyFile.FullName);
 
-            MarkdownHelper.GenerateMarkdownDocumentation(fileSyntaxTreePairs, outputDirectory);
+            var xmlDocInput = new XmlDocInput()
+            {
+                Assembly = assembly
+            };
+            
+            var xmlDocumentation = XmlDocMarkdownGenerator.Generate(xmlDocInput, new DirectoryInfo(AssemblyDirectory).Parent?.Parent?.Parent?.FullName ?? String.Empty, new XmlDocMarkdownSettings()
+            {
+                IncludeObsolete = true,
+                GenerateToc = true,
+                NewLine = "\n",
+                SourceCodePath = projectDirectory.FullName
+            });
+
+            Console.WriteLine(xmlDocumentation);
+
+            // MarkdownHelper.GenerateMarkdownDocumentation(fileSyntaxTreePairs, outputDirectory);
             
             return true;
         }

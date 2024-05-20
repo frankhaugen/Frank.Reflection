@@ -26,7 +26,7 @@ public class ClassInfo
     /// <summary>
     ///     XML summary comments
     /// </summary>
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     public SourceLocation? Location { get; set; }
     public ICollection<MethodInfo> Methods { get; set; }
