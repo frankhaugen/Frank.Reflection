@@ -17,11 +17,11 @@ public class TaskTest
     [Fact]
     public void Test1()
     {
-        var fff = new GenerateMarkdownTask(_outputHelper.CreateTestLogger<GenerateMarkdownTask>())
-        {
-            OutputDirectory = "../../../DocsTest",
-            ProjectDirectory = "../../../Frank.Reflection"
-        };
-        fff.Execute();
+        // var fff = new GenerateMarkdownTask(_outputHelper.CreateTestLogger<GenerateMarkdownTask>())
+        // {
+        //     OutputDirectory = "../../../DocsTest",
+        //     ProjectDirectory = "../../../Frank.Reflection"
+        // };
+        // fff.Execute();
     }
 }

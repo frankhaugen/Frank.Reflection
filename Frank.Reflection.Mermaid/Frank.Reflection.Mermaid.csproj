@@ -1,6 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <Description>A library that contains a Mermaid diagram renderer for WPF.</Description>
+        <PackageTags>WPF Mermaid</PackageTags>
+        
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
 

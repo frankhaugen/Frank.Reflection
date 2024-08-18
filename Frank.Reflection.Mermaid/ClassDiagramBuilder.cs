@@ -30,13 +30,3 @@ public class ClassDiagramBuilder : IClassDiagramBuilder
         return stringBuilder.ToString();
     }
 }
-
-public interface IClassDiagramBuilder : IDiagramBuilder
-{
-    
-}
-
-public interface IDiagramBuilder
-{
-    public string Build();
-}

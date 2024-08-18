@@ -8,7 +8,7 @@ using XmlDocMarkdown.Core;
 
 namespace Frank.BuildTasks.MarkdownDocGenerator;
 
-public class GenerateMarkdownTask// : ITask
+internal class GenerateMarkdownTask //: //ITask
 {
     private readonly ILogger<GenerateMarkdownTask> _logger;
 
