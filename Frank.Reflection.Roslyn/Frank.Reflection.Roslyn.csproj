@@ -21,11 +21,11 @@
     <UsingTask TaskName="Frank.BuildTasks.MarkdownDocGenerator.GenerateMarkdownTask"
                AssemblyFile="..\Frank.BuildTasks.MarkdownDocGenerator\bin\Debug\netstandard2.1\Frank.BuildTasks.MarkdownDocGenerator.dll" />
 
-    <Target Name="GenerateMarkdownDocumentation" AfterTargets="Build">
-        <GenerateMarkdownTask ProjectDirectory="$(MSBuildProjectDirectory)"
-                              OutputDirectory="..\docs"
-                              AssemblyName="$(AssemblyName)"
-                              AssemblyDirectory="$(OutputPath)" />
-    </Target>
+<!--    <Target Name="GenerateMarkdownDocumentation" AfterTargets="Build">-->
+<!--        <GenerateMarkdownTask ProjectDirectory="$(MSBuildProjectDirectory)"-->
+<!--                              OutputDirectory="..\docs"-->
+<!--                              AssemblyName="$(AssemblyName)"-->
+<!--                              AssemblyDirectory="$(OutputPath)" />-->
+<!--    </Target>-->
 
 </Project>

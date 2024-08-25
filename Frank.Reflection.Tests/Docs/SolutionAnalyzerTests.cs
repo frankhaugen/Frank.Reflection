@@ -8,8 +8,6 @@ using JetBrains.Annotations;
 
 using Microsoft.CodeAnalysis.MSBuild;
 
-using Xunit.Abstractions;
-
 
 namespace Frank.Reflection.Tests.Docs
 {

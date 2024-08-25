@@ -1,9 +1,4 @@
-﻿using Frank.BuildTasks.MarkdownDocGenerator;
-using Frank.Testing.Logging;
-
-using Xunit.Abstractions;
-
-namespace Frank.Reflection.Tests;
+﻿namespace Frank.Reflection.Tests;
 
 public class TaskTest
 {

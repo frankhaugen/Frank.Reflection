@@ -7,8 +7,6 @@ using FluentAssertions;
 using Frank.Reflection.Roslyn.Helpers;
 using Frank.Testing.Logging;
 
-using Xunit.Abstractions;
-
 namespace Frank.Reflection.Tests.Docs;
 
 [TestSubject(typeof(MarkdownDocumentationGenerator))]

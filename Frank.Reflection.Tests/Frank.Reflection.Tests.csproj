@@ -26,6 +26,7 @@
       <ProjectReference Include="..\Frank.BuildTasks.MarkdownDocGenerator\Frank.BuildTasks.MarkdownDocGenerator.csproj" />
       <ProjectReference Include="..\Frank.Reflection.Dump\Frank.Reflection.Dump.csproj" />
       <ProjectReference Include="..\Frank.Reflection.Mermaid\Frank.Reflection.Mermaid.csproj" />
+      <ProjectReference Include="..\Frank.Reflection.RoslynQuoter\Frank.Reflection.RoslynQuoter.csproj" />
       <ProjectReference Include="..\Frank.Reflection.Roslyn\Frank.Reflection.Roslyn.csproj" />
       <ProjectReference Include="..\Frank.Reflection\Frank.Reflection.csproj" />
     </ItemGroup>
