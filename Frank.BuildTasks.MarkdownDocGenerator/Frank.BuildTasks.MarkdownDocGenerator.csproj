@@ -6,6 +6,8 @@
         <Description>MSBuild task to generate markdown</Description>
         <LangVersion>latest</LangVersion>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
