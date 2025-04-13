@@ -12,7 +12,7 @@
         <PackageReference Include="Microsoft.Build.Framework" Version="17.13.9" />
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.13.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.13.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.3" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
         <PackageReference Include="XmlDocMarkdown.Core" Version="2.9.0" />
     </ItemGroup>
 
