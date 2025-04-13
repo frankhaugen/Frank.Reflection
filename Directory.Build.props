@@ -38,9 +38,5 @@
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
         <None Include="../readme.md" Pack="true" PackagePath="\" Condition="!Exists('readme.md')"/>
         <None Include="../icon.png" Pack="true" PackagePath="\" Condition="!Exists('icon.png')"/>
-        <None Include="AnalyzerReleases.Shipped.md" Pack="true" PackagePath="\" Condition="Exists('AnalyzerReleases.Shipped.md')"/>
-        <None Include="../AnalyzerReleases.Shipped.md" Pack="true" PackagePath="\" Condition="!Exists('AnalyzerReleases.Shipped.md')"/>
-        <None Include="AnalyzerReleases.Unshipped.md" Pack="true" PackagePath="\" Condition="Exists('AnalyzerReleases.Unshipped.md')"/>
-        <None Include="../AnalyzerReleases.Unshipped.md" Pack="true" PackagePath="\" Condition="!Exists('AnalyzerReleases.Unshipped.md')"/>
     </ItemGroup>
 </Project>
