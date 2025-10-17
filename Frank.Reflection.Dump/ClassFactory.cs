@@ -15,7 +15,7 @@ internal static class ClassFactory
 
         foreach (var obj in objs)
         {
-            var id = ProcessObject<T>(obj, idSelector, ids, options);
+            var id = ProcessObject<T>(obj, idSelector, ids, membersBuilder, options);
             var methodIdentity = $"Get{id}()";          
             yieldBuilder.AppendLine($"{DumpHelper.GetIndent(2)}yield return {methodIdentity};");
         }
@@ -47,7 +47,7 @@ internal static class ClassFactory
         return classResult;
     }
 
-    private static string ProcessObject<T>(T obj, Func<T, string> idSelector, List<string> ids, VarDump.Visitor.DumpOptions? options)
+    private static string ProcessObject<T>(T obj, Func<T, string> idSelector, List<string> ids, StringBuilder membersBuilder, VarDump.Visitor.DumpOptions? options)
     {
         var id = idSelector(obj);
         id = DumpHelper.CleanId(id);
@@ -59,8 +59,11 @@ internal static class ClassFactory
         code = code.Replace("Get()", $"Get{id}()");
         var codeLines = code.Split(Environment.NewLine).ToList();
         code = string.Join(Environment.NewLine, codeLines.Select(line => $"{DumpHelper.GetIndent(1)}{line}")).TrimStart().TrimEnd();
+        
+        membersBuilder.AppendLine(code);
+        membersBuilder.AppendLine();
     
-        return code;
+        return id;
     }
     
     private static List<string> GetNamespaces(Type type)
