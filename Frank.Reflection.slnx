@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="icon.png" />
+    <File Path="LICENSE" />
+    <File Path="nuget.config" />
+    <File Path="readme.md" />
+  </Folder>
+  <Project Path="Frank.BuildTasks.MarkdownDocGenerator/Frank.BuildTasks.MarkdownDocGenerator.csproj" />
+  <Project Path="Frank.Reflection.Dump/Frank.Reflection.Dump.csproj" />
+  <Project Path="Frank.Reflection.Mermaid/Frank.Reflection.Mermaid.csproj" />
+  <Project Path="Frank.Reflection.Roslyn/Frank.Reflection.Roslyn.csproj" />
+  <Project Path="Frank.Reflection.RoslynQuoter/Frank.Reflection.RoslynQuoter.csproj" />
+  <Project Path="Frank.Reflection.Tests/Frank.Reflection.Tests.csproj" />
+  <Project Path="Frank.Reflection/Frank.Reflection.csproj" />
+</Solution>
